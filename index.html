@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>PaperBox - The Ultimate ERP App</title>
+    <meta name="description" content="Ditch the clunky AKTU ERP. Track attendance, download PYQs, and view results in a blazing-fast dark mode app.">
+    <meta property="og:title" content="PaperBox - The Ultimate ERP App">
+    <meta property="og:description" content="Track multi-sem attendance, download PYQs, and check your SGPA instantly.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/0a0a0a/8b5cf6?text=PaperBox+Banner"> <meta property="og:type" content="website">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Space+Mono:wght@700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    },
+                    colors: {
+                        background: '#0a0a0a',
+                        surface: '#121214',
+                        card: '#18181b',
+                        accent: '#8b5cf6',
+                        danger: '#ef4444',
+                        success: '#10b981',
+                        muted: '#a1a1aa'
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(24, 24, 27, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #8b5cf6; }
+    </style>
+</head>
+<body class="bg-background text-white font-sans antialiased overflow-x-hidden selection:bg-accent selection:text-white">
+
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-accent/20 rounded-full mix-blend-screen filter blur-[120px] animate-blob"></div>
+        <div class="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-blue-500/10 rounded-full mix-blend-screen filter blur-[120px] animate-blob animation-delay-2000"></div>
+    </div>
+
+    <nav class="fixed w-full z-50 glass-card border-b-0 border-white/5 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-black tracking-tighter flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-blue-500 flex items-center justify-center shadow-lg">
+                    <i class="ph-bold ph-student text-white"></i>
+                </div>
+                PaperBox<span class="text-accent">.</span>
+            </div>
+            <a href="#download" class="bg-white text-black px-5 py-2 rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                Get the App
+            </a>
+        </div>
+    </nav>
+
+    <section class="relative pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between min-h-screen gap-12">
+        
+        <div class="flex-1 text-center lg:text-left z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-card text-xs font-mono font-bold text-accent mb-6 reveal">
+                <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                v1.0.8 is LIVE • Trusted by 300+ Scholars
+            </div>
+            
+            <h1 class="text-5xl lg:text-7xl font-black tracking-tighter leading-[1.1] mb-6 reveal delay-100">
+                The ERP App <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-blue-500">Forgot to Build.</span>
+            </h1>
+            
+            <p class="text-lg text-muted mb-10 font-medium max-w-xl mx-auto lg:mx-0 reveal delay-200">
+                Stop zooming into clunky webpages. Track multi-sem attendance, download PYQs instantly, and view your results in a blazing-fast dark mode app.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start reveal delay-300">
+                
+                <a href="#download" class="sm:hidden bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(139,92,246,0.3)]">
+                    <i class="ph-bold ph-download-simple"></i> Download APK
+                </a>
+                
+                <a href="#download" class="hidden sm:flex bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all items-center justify-center gap-2 shadow-[0_0_30px_rgba(139,92,246,0.3)] hover:scale-105">
+                    <i class="ph-bold ph-qr-code"></i> Scan to Download
+                </a>
+
+                <a href="#features" class="glass-card hover:bg-white/10 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all flex items-center justify-center gap-2">
+                    See Features <i class="ph-bold ph-arrow-down"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="flex-1 relative w-full max-w-md reveal delay-200">
+            <div class="absolute inset-0 bg-accent/20 blur-[80px] rounded-full"></div>
+            
+            <div class="relative w-[300px] h-[600px] mx-auto bg-black border-[6px] border-[#333] rounded-[40px] shadow-2xl overflow-hidden transform rotate-[-5deg] hover:rotate-0 transition-all duration-500 group">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#333] rounded-b-2xl z-20"></div>
+                
+                <img src="https://beeimg.com/images/n92432607064.webp" alt="App UI" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
+                
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 flex flex-col justify-end p-6">
+                    <div class="w-full h-32 glass-card rounded-2xl mb-4 p-4">
+                        <div class="w-1/2 h-4 bg-white/20 rounded mb-2"></div>
+                        <div class="w-3/4 h-8 bg-accent/80 rounded"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto px-6 py-10 reveal">
+        <div class="glass-card rounded-3xl p-8 border-accent/30 relative overflow-hidden shadow-[0_0_50px_rgba(139,92,246,0.1)] text-center">
+            <div class="absolute top-[-20px] right-[-20px] text-[150px] opacity-5 pointer-events-none">
+                <i class="ph-fill ph-calculator"></i>
+            </div>
+            <h2 class="text-2xl font-black mb-2 flex items-center justify-center gap-2">
+                <i class="ph-fill ph-magic-wand text-accent"></i> The Bunk Predictor
+            </h2>
+            <p class="text-muted text-sm mb-6">Test the math right now. How many classes can you miss?</p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6 relative z-10">
+                <input type="number" id="demo-total" placeholder="Total Classes (e.g. 40)" class="bg-black border border-white/20 rounded-xl px-4 py-3 text-white outline-none focus:border-accent transition-colors w-full sm:w-48 text-center" />
+                <input type="number" id="demo-present" placeholder="Attended (e.g. 35)" class="bg-black border border-white/20 rounded-xl px-4 py-3 text-white outline-none focus:border-accent transition-colors w-full sm:w-48 text-center" />
+                <button onclick="calculateBunk()" class="w-full sm:w-auto bg-accent text-white px-6 py-3 rounded-xl font-bold hover:bg-accent/80 transition-colors">
+                    Calculate
+                </button>
+            </div>
+            
+            <div id="demo-result" class="text-lg font-mono font-bold text-muted h-8 transition-all">
+                Enter your stats above.
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-3xl lg:text-5xl font-black tracking-tight mb-4">Everything you need. <br/><span class="text-muted">Nothing you don't.</span></h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-card p-8 rounded-3xl md:col-span-2 reveal relative overflow-hidden group">
+                <div class="w-12 h-12 bg-accent/20 text-accent rounded-xl flex items-center justify-center text-2xl mb-6">
+                    <i class="ph-fill ph-chart-donut"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Smart Attendance Engine</h3>
+                <p class="text-muted max-w-md">No more mental math. Track multiple semesters instantly. See exact buffer/deficit days and a beautiful daily timeline log of exactly when you were marked absent.</p>
+                <div class="absolute right-[-20px] bottom-[-40px] w-64 h-48 bg-black border border-white/10 rounded-2xl shadow-xl hidden md:block transform group-hover:-translate-y-4 group-hover:-translate-x-4 transition-transform duration-500">
+                    <div class="p-4 border-b border-white/10 flex justify-between"><div class="w-1/2 h-3 bg-white/20 rounded"></div><div class="text-accent font-bold text-xs">88%</div></div>
+                    <div class="p-4 space-y-2"><div class="w-full h-8 bg-white/5 rounded"></div><div class="w-full h-8 bg-white/5 rounded"></div></div>
+                </div>
+            </div>
+
+            <div class="glass-card p-8 rounded-3xl reveal relative overflow-hidden group">
+                <div class="w-12 h-12 bg-emerald-500/20 text-emerald-500 rounded-xl flex items-center justify-center text-2xl mb-6">
+                    <i class="ph-fill ph-books"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">The PYQ Vault</h3>
+                <p class="text-muted text-sm">B.Tech, B.Pharm, M.Tech & more. Search and download past year questions instantly. Stop hunting on sketchy ad-filled websites.</p>
+            </div>
+
+            <div class="glass-card p-8 rounded-3xl reveal relative overflow-hidden group">
+                <div class="w-12 h-12 bg-blue-500/20 text-blue-500 rounded-xl flex items-center justify-center text-2xl mb-6">
+                    <i class="ph-bold ph-rocket-launch"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Auto-Updates</h3>
+                <p class="text-muted text-sm">Never ask WhatsApp groups for a new APK link again. The app checks for and installs updates seamlessly.</p>
+            </div>
+
+            <div class="glass-card p-8 rounded-3xl md:col-span-2 reveal relative overflow-hidden group">
+                <div class="w-12 h-12 bg-pink-500/20 text-pink-500 rounded-xl flex items-center justify-center text-2xl mb-6">
+                    <i class="ph-fill ph-sparkle"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Instant Results & SGPA</h3>
+                <p class="text-muted max-w-md">AKTU OneView crashing again? View your color-coded grades, detailed semester history, and SGPA directly inside the app. Always available.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white/5 border-y border-white/5 overflow-hidden reveal">
+        <div class="max-w-7xl mx-auto px-6 mb-10 text-center">
+            <h2 class="text-3xl font-black">Trusted by the community.</h2>
+        </div>
+        <div class="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto px-6">
+            <div class="glass-card p-6 rounded-2xl max-w-sm">
+                <div class="flex text-yellow-500 mb-2"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                <p class="text-sm italic mb-4">"Finally an app that doesn't burn my eyes at 2 AM. The dark mode is super clean and PYQ downloads are instant."</p>
+                <div class="text-xs font-bold text-muted">— Rahul, 1st Year B.Tech</div>
+            </div>
+            <div class="glass-card p-6 rounded-2xl max-w-sm">
+                <div class="flex text-yellow-500 mb-2"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                <p class="text-sm italic mb-4">"The exact number of lectures I can bunk feature is a literal lifesaver. Saved me from getting debarred."</p>
+                <div class="text-xs font-bold text-muted">— Sneha, 2nd Year B.Pharm</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-3xl mx-auto px-6 py-20 reveal">
+        <h2 class="text-3xl font-black text-center mb-10">Frequently Asked Questions</h2>
+        
+        <div class="space-y-4">
+            <details class="glass-card p-6 rounded-2xl group cursor-pointer" open>
+                <summary class="font-bold text-lg outline-none flex justify-between items-center">
+                    Is my AKTU ERP password safe?
+                    <i class="ph-bold ph-caret-down group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <p class="text-muted mt-4 text-sm leading-relaxed">
+                    100% Yes. We do not store your ERP password on our servers. Your login credentials are saved locally and encrypted on your own device. The app directly communicates with the AKTU servers to fetch your data.
+                </p>
+            </details>
+            
+            <details class="glass-card p-6 rounded-2xl group cursor-pointer">
+                <summary class="font-bold text-lg outline-none flex justify-between items-center">
+                    Is the app free?
+                    <i class="ph-bold ph-caret-down group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <p class="text-muted mt-4 text-sm leading-relaxed">
+                    Yes, absolutely free with no annoying popup ads. Built by students, for students.
+                </p>
+            </details>
+
+            <details class="glass-card p-6 rounded-2xl group cursor-pointer">
+                <summary class="font-bold text-lg outline-none flex justify-between items-center">
+                    Why isn't this on the Google Play Store?
+                    <i class="ph-bold ph-caret-down group-open:rotate-180 transition-transform"></i>
+                </summary>
+                <p class="text-muted mt-4 text-sm leading-relaxed">
+                    Google Play takes weeks to review updates, and AKTU portals change constantly. By providing the APK directly, we can push bug fixes and new features (like the new PYQ hub) to you instantly.
+                </p>
+            </details>
+        </div>
+    </section>
+
+    <section id="download" class="py-24 px-6 text-center reveal border-t border-white/5 bg-gradient-to-t from-accent/10 to-transparent">
+        <h2 class="text-4xl lg:text-6xl font-black mb-6">Ready to upgrade?</h2>
+        
+        <div class="hidden sm:flex flex-col items-center justify-center mb-8">
+            <div class="p-4 bg-white rounded-2xl shadow-2xl mb-4">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://archive.org/download/paper-box-v-1.0.8/PaperBox-v1.0.8.apk" alt="Scan to Download" class="w-32 h-32" />
+            </div>
+            <p class="text-muted font-mono">Scan with your phone to download</p>
+        </div>
+
+        <a href="https://archive.org/download/paper-box-v-1.0.8/PaperBox-v1.0.8.apk" class="bg-white text-black hover:bg-gray-200 px-10 py-5 rounded-2xl font-black text-xl transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)] inline-flex items-center justify-center gap-3 w-full sm:w-auto">
+            <i class="ph-fill ph-android-logo text-2xl"></i> Download APK
+        </a>
+        <p class="mt-4 text-sm text-muted font-mono">Requires Android 8.0+ • Size: ~15MB</p>
+    </section>
+
+    <footer class="border-t border-white/10 mt-10 py-10 px-6 reveal">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-muted text-sm">
+            <div class="flex items-center gap-2 text-lg font-bold text-white">
+                <i class="ph-fill ph-student text-accent"></i> PaperBox
+            </div>
+            <p>Built with ❤️ by scholars, for scholars.</p>
+            <div class="flex gap-4">
+                <button onclick="openModal('privacyModal')" class="hover:text-white transition-colors">Privacy Policy</button>
+                <button onclick="openModal('termsModal')" class="hover:text-white transition-colors">Terms of Service</button>
+                <a href="mailto:your-email@gmail.com" class="hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="privacyModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm transition-opacity">
+        <div class="bg-card border border-white/10 p-6 rounded-3xl max-w-xl w-full shadow-2xl">
+            <h2 class="text-2xl font-black mb-4 text-white">Privacy Policy</h2>
+            <div class="text-muted text-sm space-y-4 mb-6">
+                <p>Your privacy is our priority. <strong>PaperBox stores your AKTU ERP credentials locally on your own device.</strong></p>
+                <p>We do not transmit, save, or view your passwords on any third-party servers. The app acts merely as a bridge between your phone and the official AKTU servers to fetch your attendance and results.</p>
+                <p>We may collect anonymous crash analytics to help us fix bugs and improve the app experience.</p>
+            </div>
+            <button onclick="closeModal('privacyModal')" class="w-full bg-accent hover:bg-accent/80 text-white px-6 py-3 rounded-xl font-bold transition-colors">I Understand</button>
+        </div>
+    </div>
+
+    <div id="termsModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm transition-opacity">
+        <div class="bg-card border border-white/10 p-6 rounded-3xl max-w-xl w-full shadow-2xl">
+            <h2 class="text-2xl font-black mb-4 text-white">Terms of Service</h2>
+            <div class="text-muted text-sm space-y-4 mb-6">
+                <p>By using PaperBox, you agree that this is an <strong>unofficial client</strong>. We are not affiliated with, endorsed by, or sponsored by Dr. A.P.J. Abdul Kalam Technical University (AKTU).</p>
+                <p>The app is provided "as is" without any warranties. While we strive for 100% accuracy, you are responsible for verifying critical academic information (like exam dates and official debarred lists) on the official university portal.</p>
+            </div>
+            <button onclick="closeModal('termsModal')" class="w-full bg-accent hover:bg-accent/80 text-white px-6 py-3 rounded-xl font-bold transition-colors">Got it</button>
+        </div>
+    </div>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 50) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); 
+        
+        function calculateBunk() {
+            let total = parseFloat(document.getElementById('demo-total').value);
+            let present = parseFloat(document.getElementById('demo-present').value);
+            let resultDiv = document.getElementById('demo-result');
+
+            if (isNaN(total) || isNaN(present) || total < present || total <= 0) {
+                resultDiv.innerHTML = '<span class="text-danger">Enter valid numbers bro 💀</span>';
+                return;
+            }
+
+            let currentPercent = (present / total) * 100;
+            
+            if (currentPercent >= 75) {
+                let maxMissed = Math.floor((present / 0.75) - total);
+                resultDiv.innerHTML = `You can bunk <span class="text-success text-xl px-1">${maxMissed}</span> more classes safely. 🏖️`;
+            } else {
+                let needed = Math.ceil((0.75 * total - present) / 0.25);
+                resultDiv.innerHTML = `You need to attend <span class="text-danger text-xl px-1">${needed}</span> classes straight. 🏃‍♂️💨`;
+            }
+        }
+
+        // ADDED MODAL LOGIC HERE
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+            document.body.style.overflow = 'auto'; 
+        }
+    </script>
+</body>
+</html>
